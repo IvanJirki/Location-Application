@@ -9,9 +9,8 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = () => {
     if (username && password) {
-      // Kirjautumisen onnistuminen
       Alert.alert('Success', 'You have logged in successfully!');
-      navigation.replace('Main'); // Siirrytään päänäyttöön, kun kirjautuminen onnistuu
+      navigation.replace('Main'); 
     } else {
       Alert.alert('Error', 'Please enter both username and password.');
     }

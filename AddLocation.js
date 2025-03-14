@@ -8,35 +8,28 @@ const AddLocationScreen = ({ navigation }) => {
   const [description, setDescription] = useState('');
   const [rating, setRating] = useState(0);
 
-  // Function to handle adding the location
   const handleAddLocation = async () => {
     if (name && description && rating > 0) {
       try {
-        // Reference to the Firestore collection
         const db = firebase.firestore();
-        const userId = firebase.auth().currentUser.uid; // Assuming the user is logged in
+        const userId = firebase.auth().currentUser.uid;
 
-        // Create a new location object
         const newLocation = {
           name,
           description,
           rating,
           userId,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(), // Timestamp for sorting
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         };
 
-        // Save to Firestore
         await db.collection('locations').add(newLocation);
 
-        // Show success alert
         Alert.alert('Success', 'Location added successfully');
         
-        // Clear the inputs
         setName('');
         setDescription('');
         setRating(0);
         
-        // Navigate back to Locations screen (or update the list view in the parent)
         navigation.goBack();
       } catch (error) {
         Alert.alert('Error', 'Failed to add location: ' + error.message);
@@ -46,12 +39,10 @@ const AddLocationScreen = ({ navigation }) => {
     }
   };
 
-  // Function to handle star click (sets rating)
   const handleStarPress = (starIndex) => {
     setRating(starIndex);
   };
 
-  // Render stars
   const renderStars = () => {
     let stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -69,28 +60,20 @@ const AddLocationScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Add Location</Text>
-
-      {/* Location Name Input */}
       <TextInput
         style={styles.input}
         placeholder="Location Name"
         value={name}
         onChangeText={setName}
       />
-
-      {/* Description Input */}
       <TextInput
         style={styles.input}
         placeholder="Description"
         value={description}
         onChangeText={setDescription}
       />
-
-      {/* Rating (Star Rating) */}
       <Text style={styles.label}>Rating</Text>
       <View style={styles.starsContainer}>{renderStars()}</View>
-
-      {/* Button to add location */}
       <TouchableOpacity style={styles.button} onPress={handleAddLocation}>
         <Text style={styles.buttonText}>Add Location</Text>
       </TouchableOpacity>
@@ -113,8 +96,8 @@ const styles = StyleSheet.create({
   label: { fontSize: 18, fontWeight: 'bold', marginTop: 10 },
   starsContainer: { flexDirection: 'row', marginVertical: 10 },
   star: { fontSize: 40, marginHorizontal: 5 },
-  filledStar: { color: '#FFD700' }, // Gold for filled stars
-  emptyStar: { color: '#D3D3D3' }, // Light gray for empty stars
+  filledStar: { color: '#FFD700' }, 
+  emptyStar: { color: '#D3D3D3' }, 
   button: {
     backgroundColor: '#007bff',
     paddingVertical: 12,

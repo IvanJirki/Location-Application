@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f4f4f4', // Vaaleanharmaa taustaväri
+    backgroundColor: '#f4f4f4', 
   },
   title: {
     fontSize: 28,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     backgroundColor: '#fff',
     fontSize: 16,
-    shadowColor: '#000', // Lisää varjo-efektin
+    shadowColor: '#000', 
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     alignItems: 'center',
     width: '90%',
-    elevation: 5, // Varjo Androidille
+    elevation: 5, 
   },
   buttonText: {
     color: '#fff',
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   star: {
-    color: '#FFD700', // Kullankeltainen tähti
+    color: '#FFD700', 
     fontSize: 20,
   },
   flatListContainer: {

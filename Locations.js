@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TextInput, TouchableOpacity, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';  
-import { useNavigation } from '@react-navigation/native';  // Lisää tämä navigointi varten
+import { useNavigation } from '@react-navigation/native';
 
 const Locations = () => {
   const [locations, setLocations] = useState([]);
@@ -12,7 +12,7 @@ const Locations = () => {
     rating: 0,  
   });
 
-  const navigation = useNavigation();  // Lisää tämä navigointi varten
+  const navigation = useNavigation();
 
   useEffect(() => {
     setLocations([
@@ -23,7 +23,6 @@ const Locations = () => {
   }, []);
 
   const handleLocationSelect = (location) => {
-    // Navigoi MapScreen-näkymään ja välitä valittu sijainti
     navigation.navigate('Map', { location: { latitude: location.lat, longitude: location.lng } });
   };
 
@@ -36,12 +35,12 @@ const Locations = () => {
           name: newLocation.name,
           review: newLocation.review,
           rating: newLocation.rating,
-          lat: 0,  // Voit lisätä koordinaatit tässä tai käyttää geocodingia
-          lng: 0,  // Voit lisätä koordinaatit tässä tai käyttää geocodingia
+          lat: 0,  
+          lng: 0,  
         },
       ]);
-      setIsModalVisible(false);  // Suljetaan modal
-      setNewLocation({ name: '', review: '', rating: 0 });  // Tyhjennetään kentät
+      setIsModalVisible(false);
+      setNewLocation({ name: '', review: '', rating: 0 });
     }
   };
 
@@ -60,16 +59,12 @@ const Locations = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Locations</Text>
-      
-      {/* Add Location Button */}
       <TouchableOpacity
         style={styles.addLocationButton}
         onPress={() => setIsModalVisible(true)}
       >
         <Text style={styles.addLocationButtonText}>Add Location</Text>
       </TouchableOpacity>
-
-      {/* Modal for adding new location */}
       <Modal visible={isModalVisible} animationType="slide">
         <View style={styles.modalContainer}>
           <Text style={styles.modalTitle}>Add New Location</Text>
@@ -105,7 +100,6 @@ const Locations = () => {
           </TouchableOpacity>
         </View>
       </Modal>
-
       <FlatList
         data={locations}
         keyExtractor={(item) => item.id}

@@ -4,12 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import LocationsScreen from './Locations';  // Oikea polku
+import LocationsScreen from './Locations';  
 import AddLocationScreen from './AddLocation';
 import MapScreen from './MapScreen';
 import CapitalsScreen from './Capitals';
 import LoginScreen from './LoginScreen';
-import styles from './styles';  // Varmista oikea polku
+import styles from './styles';  
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

@@ -7,13 +7,12 @@ const CapitalsScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // Fetch data from the Country API
     const fetchCountries = async () => {
       try {
         const response = await fetch('https://restcountries.com/v3.1/all');
         const data = await response.json();
         setCountries(data);
-        setFilteredCountries(data); // Initially show all countries
+        setFilteredCountries(data);
       } catch (error) {
         console.error('Error fetching countries:', error);
       }
@@ -22,7 +21,6 @@ const CapitalsScreen = () => {
     fetchCountries();
   }, []);
 
-  // Filter countries based on the search query
   const handleSearch = (text) => {
     setSearchQuery(text);
     const filtered = countries.filter(
@@ -33,11 +31,9 @@ const CapitalsScreen = () => {
     setFilteredCountries(filtered);
   };
 
-  // Render a single item in the FlatList
   const renderItem = ({ item }) => {
     return (
       <View style={styles.locationItem}>
-        {/* Country Flag */}
         <Image source={{ uri: item.flags[0] }} style={styles.flag} />
         <Text style={styles.text}>
           {item.name.common}: {item.capital ? item.capital[0] : 'No capital'}
@@ -50,7 +46,6 @@ const CapitalsScreen = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Countries and Capitals</Text>
 
-      {/* Search Input */}
       <TextInput
         style={styles.searchInput}
         placeholder="Search countries or capitals"
